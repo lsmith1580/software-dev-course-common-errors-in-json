@@ -44,31 +44,37 @@ but it contains multiple syntax errors that prevent it from being parsed.
 // 🔍 Provided JSON File with Errors
 // ============================================
 
-const invalidBookingJSON = `
+const invalidBookingJSON = 
 {
   "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
+  "checkInDate": "2024-05-15",     
   "checkOutDate": "2024-05-20",
   "guests": [
     {
-      name: "Alice Johnson",
+      "name": "Alice Johnson",
       "age": 30,
       "email": "alice.johnson@example.com"
     },
     {
       "name": "Bob Smith",
-      "age": undefined,
-      "email": "bob.smith@example"
+      "age": null,
+      "email": "bob.smith@example.com"
     }
   ],
   "roomDetails": {
     "type": "Suite",
     "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
+    "amenities": ["WiFi", "Breakfast", "Parking"]
   }
 }
-`;
+;
 
+//Added a comma on line 50 to separate checkInDate from checkOutDate
+//Added double quotes on line 54 to the key name to follow proper JSON formatting
+//Changed the value of age on line 60 to null, as undefined is not an allowed data type in JSON
+//Not a syntax error but I noticed the email on line 61 doesn't have a domain, so I added one
+//Removed the trailing comma after parking on line 67, which would cause a syntax error
+//Removed the backticks that surrounded the entire object 
 
 // ============================================
 // ✅ Requirements
@@ -82,6 +88,9 @@ const invalidBookingJSON = `
   • What did you change to fix it?
 */
 
+//Originally included the variable declaration when using the validator and realized I had to not include that
+//Then it pointed out the backticks around the entire object
+//Once I omitted the variable declaration and removed the backticks, it was valid
 
 // ============================================
 // 🤔 Follow-Up Questions
@@ -99,3 +108,8 @@ const invalidBookingJSON = `
 4️⃣ What strategies can help you avoid these kinds of errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
 */
+
+//I first just looked through the code myself to spot the errors, then pasted it into JSONLint to find any
+//additional errors and fix them. The linter confirmed that it was valid. The backticks were the most difficult to 
+//spot not only because of how small they are but also because I wasn't sure at first if was necessary to have it there
+//in the JavaScript. Using linters is extremely helpful in making sure every error is spotted and addressed. 
